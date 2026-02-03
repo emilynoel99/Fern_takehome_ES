@@ -1,0 +1,90 @@
+imports:
+  types: types.yml
+
+service:
+  auth: false
+  base-path: /plant
+  endpoints:
+    addPlant:
+      display-name: Add a new plant
+      path: /plant
+      method: POST
+      docs: Add a new plant to the store
+      request: 
+        name: AddPlantRequest
+        body: types.Plant
+      response: types.PlantResponse
+      examples:
+        - request:
+            name: "Fern"
+            category: "Indoor"
+            tags: ["green", "leafy"]
+            status: available
+          response:
+            body:
+              id: 101
+              name: "Fern"
+              status: "available"
+              tags: ["green", "leafy"]
+
+    updatePlant:
+      display-name: Update an existing plant
+      path: /plant
+      method: PUT
+      request:
+        name: UpdatePlantRequest
+        body: types.Plant
+      response: types.PlantResponse
+
+    getPlantById:
+      display-name: Find plant by ID
+      path: /plant/{plantId}
+      method: GET
+      docs: Retrieve a plant's details by its ID
+      request:
+        name: GetPlantByIdRequest
+        path-parameters:
+          plantId: integer
+      response: types.PlantResponse
+
+    searchPlantsByStatus:
+      display-name: Search plants by status
+      path: /plant/search/status
+      method: GET
+      request:
+        name: SearchPlantsByStatusRequest
+        query-parameters:
+          status: optional<types.PlantStatus>
+      response: list<types.PlantResponse>
+
+    searchPlantsByTags:
+      display-name: Search plants by tags
+      path: /plant/search/tags
+      method: GET
+      request:
+        name: SearchPlantsByTagsRequest
+        query-parameters:
+          tags: list<string>
+      response: list<types.PlantResponse>
+
+# types:
+#   Plant:
+#     docs: Details of a plant to add or update
+#     properties:
+#       name: string
+#       category: optional<string>
+#       tags: list<string>
+#       status: PlantStatus
+
+#   PlantStatus:
+#     enum:
+#       - available
+#       - pending
+#       - sold
+
+#   PlantResponse:
+#     properties:
+#       id: integer
+#       name: string
+#       status: string
+#       tags: list<string>

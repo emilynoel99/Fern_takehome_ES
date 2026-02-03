@@ -1,0 +1,32 @@
+types:
+  Plant:
+    docs: Details of a plant to add or update
+    properties:
+      name: string
+      category: optional<string>
+      tags: list<string>
+      status: PlantStatus
+
+  PlantStatus:
+    enum:
+      - available
+      - pending
+      - sold
+
+  PlantResponse:
+    properties:
+      id: integer
+      name: string
+      status: string
+      tags: list<string>
+
+  User:
+    properties:
+      id: integer
+      username: string
+      email: string
+
+  UserAuthResponse:
+    properties:
+      token: string
+      expiresIn: integer

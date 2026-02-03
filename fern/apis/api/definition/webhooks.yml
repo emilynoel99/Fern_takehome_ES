@@ -1,0 +1,28 @@
+imports:
+  types: types.yml
+
+webhooks: 
+  PlantCreated: 
+    display-name: Webhook for when a plant is created
+    docs: Webhook for when a plant is created
+    method: POST 
+    payload: PlantCreatedPayload
+
+types:
+  PlantCreatedPayload:
+    properties:
+      event: optional<PayloadEvent>
+      timestamp: optional<datetime>
+      data: PayloadData
+
+  PayloadEvent:
+    enum:
+      - name: plantCreated
+        value: plant.created
+        
+  PayloadData:
+    properties:
+      id: optional<integer>
+      name: optional<string>
+      status: optional<string>
+      tags: optional<list<string>>

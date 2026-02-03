@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=https://schema.buildwithfern.dev/docs-yml.json
+
+instances:
+  - url: emily-saunders-demo.docs.buildwithfern.com
+
+title: Sample | Documentation
+
+# This creates that green "Welcome" bar at the very top
+announcement: 
+  message: "Welcome to the Fern take home docs assignment [→](https://buildwithfern.com/)"
+
+# This adds the extra links in the header next to the search bar
+navbar-links:
+  - type: secondary
+    text: Learn More
+    url: https://buildwithfern.com/
+  - type: primary
+    text: Plants
+    url: https://buildwithfern.com/
+  - type: filled
+    text: About Us
+    url: https://buildwithfern.com/
+
+layout:
+  searchbar-placement: header
+  page-width: full
+  tabs-placement: header
+
+
+settings:
+  dark-mode-code: true
+  http-snippets: true
+
+tabs:
+  home:
+    display-name: Home
+    skip-slug: true
+  api-reference:
+    display-name: API Reference
+  instructions:
+    display-name: Instructions
+
+navigation:
+  - tab: home
+    layout:
+      - page: Home
+        path: docs/pages/landingpage.mdx
+  - tab: api-reference
+    layout:
+      - api: API Reference
+        api-name: api
+  - tab: instructions
+    layout:
+      - page: Instructions
+        path: docs/pages/instructions.mdx
+  
+colors:
+  accentPrimary:
+    dark: "#62d681"  
+    light: "#2e7d32"
+  background:
+    light: "#FFFFFF"
+    dark: "#0a0a0a"
+
+page-actions:
+  options: 
+    chatgpt: true
+    claude: true
+    cursor: true
+  
+css: 
+  - docs/assets/main.css
+
+typography:
+  bodyFont:
+    name: clarkson
+    paths: 
+      - path: docs/assets/fonts/clarkson-300.woff2
+        weight: 300
+        style: normal
+      - path: docs/assets/fonts/clarkson-400.woff2
+        weight: 400
+        style: normal
+      - path: docs/assets/fonts/clarkson-500.woff2
+        weight: 600
+        style: normal
+
+logo:
+  dark: docs/assets/logo-dark.svg
+  light: docs/assets/logo-light.svg
+  height: 20
+  href: /
+
+favicon: docs/assets/favicon.svg
